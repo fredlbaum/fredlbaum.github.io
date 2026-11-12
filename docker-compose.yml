@@ -2,7 +2,7 @@ services:
   eleventy:
     image: node:22-slim
     working_dir: /srv/site
-    command: sh -c "npm install && rm -rf _site/* && npx @11ty/eleventy --serve --port=4000 --host=0.0.0.0"
+    command: sh -c "npm ci && rm -rf _site/* && npx @11ty/eleventy --serve --port=4000"
     ports:
       - "4000:4000"
     volumes:
