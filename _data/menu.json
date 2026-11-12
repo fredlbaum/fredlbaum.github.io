@@ -1,103 +1,94 @@
 {
   "items": [
     {
-      "id": "characters",
-      "label": "CHARACTERS",
-      "behavior": "vertical_stack",
+      "id": "about",
+      "label": "ABOUT",
+      "behavior": "horizontal_extension",
       "color": "#1B1E4B",
       "textColor": "#FFFFFF",
-      "url": "#characters",
+      "extensionText": "K0FLB & OPERATOR PROFILE",
+      "url": "/about/"
+    },
+    {
+      "id": "gear",
+      "label": "GEAR",
+      "behavior": "vertical_stack",
+      "color": "#1565C0",
+      "textColor": "#FFFFFF",
+      "url": "/gear/",
       "subItems": [
         {
-          "label": "ARTHUR DENT",
+          "label": "TRANSCEIVERS",
           "color": "#D4881E",
           "textColor": "#FFFFFF",
-          "tagline": "Unwitting Cosmic Traveler",
-          "url": "/guide/arthur-dent/"
+          "tagline": "HF / 6m / VHF / UHF Rigs",
+          "url": "/gear/#transceivers"
         },
         {
-          "label": "FORD PREFECT",
+          "label": "ANTENNAS",
           "color": "#00838F",
           "textColor": "#FFFFFF",
-          "tagline": "Field Researcher, Betelgeuse Five",
-          "url": "/guide/ford-prefect/"
+          "tagline": "Wire Dipoles, Verticals & Beams",
+          "url": "/gear/#antennas"
         },
         {
-          "label": "MARVIN",
+          "label": "PORTABLE & QRP",
           "color": "#546E7A",
           "textColor": "#FFFFFF",
-          "tagline": "Paranoid Android (Brain Size: Planet)",
-          "url": "/guide/marvin/"
+          "tagline": "Field Day & Parks on the Air",
+          "url": "/gear/#portable"
         },
         {
-          "label": "TRILLIAN",
+          "label": "POWER & BATTERIES",
           "color": "#8E24AA",
           "textColor": "#FFFFFF",
-          "tagline": "Astrophysicist & Pilot",
-          "url": "/guide/trillian/"
+          "tagline": "Solar & LiFePO4 Station Power",
+          "url": "/gear/#power"
         },
         {
-          "label": "ZAPHOD BEEBLEBROX",
+          "label": "KEYS & AUDIO",
           "color": "#E65100",
           "textColor": "#FFFFFF",
-          "tagline": "President of the Galaxy",
-          "url": "/guide/zaphod-beeblebrox/"
+          "tagline": "CW Paddles, Microphones & DSP",
+          "url": "/gear/#accessories"
         }
       ]
     },
     {
-      "id": "universe",
-      "label": "UNIVERSE",
-      "behavior": "horizontal_extension",
-      "color": "#1565C0",
-      "textColor": "#FFFFFF",
-      "extensionText": "REALLY BIG",
-      "url": "/guide/universe/"
-    },
-    {
-      "id": "heart-of-gold",
-      "label": "HEART OF GOLD",
+      "id": "projects",
+      "label": "PROJECTS",
       "behavior": "horizontal_extension",
       "color": "#007A87",
       "textColor": "#FFFFFF",
-      "extensionText": "EVERYWHERE AT ONCE",
-      "url": "/guide/heart-of-gold/"
+      "extensionText": "ANTENNAS, DIGITAL & HARDWARE",
+      "url": "/projects/"
     },
     {
-      "id": "earth",
-      "label": "EARTH",
+      "id": "links",
+      "label": "LINKS",
       "behavior": "horizontal_extension",
       "color": "#1B7E43",
       "textColor": "#FFFFFF",
-      "extensionText": "MOSTLY HARMLESS",
-      "url": "/guide/earth/"
+      "extensionText": "RADIO CLUBS, TOOLS & RESOURCES",
+      "url": "/links/"
     },
     {
-      "id": "towels",
-      "label": "TOWELS",
-      "behavior": "horizontal_extension",
-      "color": "#689F38",
-      "textColor": "#FFFFFF",
-      "extensionText": "ALWAYS KNOW WHERE IT IS",
-      "url": "/guide/towels/"
-    },
-    {
-      "id": "vogons",
-      "label": "VOGONS",
+      "id": "guestbook",
+      "label": "GUEST BOOK",
       "behavior": "horizontal_extension",
       "color": "#D84315",
       "textColor": "#FFFFFF",
-      "extensionText": "WORST POETRY IN THE GALAXY",
-      "url": "/guide/vogons/"
+      "extensionText": "SIGN THE STATION LOG",
+      "url": "/guestbook/"
     },
     {
-      "id": "milliways",
-      "label": "MILLIWAYS",
+      "id": "blog",
+      "label": "BLOG",
       "behavior": "horizontal_extension",
       "color": "#B71C1C",
       "textColor": "#FFFFFF",
-      "extensionText": "AT THE END OF THE UNIVERSE",
-      "url": "/guide/milliways/"
+      "extensionText": "TRANSMISSIONS & FIELD NOTES",
+      "url": "/blog/"
     }
   ],
   "footerItem": {
@@ -106,6 +97,6 @@
     "badge": "DON'T PANIC",
     "color": "#141414",
     "textColor": "#FFEE33",
-    "url": "/posts/"
+    "url": "/guide/"
   }
 }
