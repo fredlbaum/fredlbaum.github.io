@@ -1,0 +1,65 @@
+<nav class="guide-menu" aria-label="Interactive Galactic Guide Menu">
+  {% for item in menu.items %}
+    {% if item.behavior == "vertical_stack" %}
+      <div class="guide-menu__item guide-menu__item--vertical"
+           data-behavior="vertical_stack"
+           id="menu-item-{{ item.id }}"
+           style="--bar-color: {{ item.color }}; --bar-text: {{ item.textColor }};">
+        <a href="{{ item.url }}"
+           class="guide-bar"
+           aria-haspopup="true"
+           aria-expanded="false"
+           aria-label="{{ item.label }} menu">
+          <span class="guide-bar__label">{{ item.label }}</span>
+          <span class="guide-bar__cap" aria-hidden="true"></span>
+        </a>
+
+        {% if item.subItems %}
+          <div class="guide-popup-stack" role="menu" aria-label="{{ item.label }} sub-menu">
+            {% for sub in item.subItems %}
+              <a href="{{ sub.url }}"
+                 class="guide-sub-bar"
+                 style="--sub-color: {{ sub.color }}; --sub-text: {{ sub.textColor }}; --sub-index: {{ forloop.index0 }};"
+                 role="menuitem">
+                <span class="guide-sub-bar__label">{{ sub.label }}</span>
+                {% if sub.tagline %}
+                  <span class="guide-sub-bar__tagline">{{ sub.tagline }}</span>
+                {% endif %}
+                <span class="guide-sub-bar__cap" aria-hidden="true"></span>
+              </a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    {% else %}
+      <div class="guide-menu__item guide-menu__item--extension"
+           data-behavior="horizontal_extension"
+           id="menu-item-{{ item.id }}"
+           style="--bar-color: {{ item.color }}; --bar-text: {{ item.textColor }};">
+        <a href="{{ item.url }}"
+           class="guide-bar"
+           aria-label="{{ item.label }}: {{ item.extensionText }}">
+          <span class="guide-bar__label">{{ item.label }}</span>
+          <span class="guide-bar__extension">{{ item.extensionText }}</span>
+          <span class="guide-bar__cap" aria-hidden="true"></span>
+        </a>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  {% if menu.footerItem %}
+    <div class="guide-menu__footer">
+      <div class="guide-menu__item">
+        <a href="{{ menu.footerItem.url }}"
+           class="guide-bar guide-bar--footer"
+           aria-label="{{ menu.footerItem.label }}">
+          <span class="guide-bar__label">{{ menu.footerItem.label }}</span>
+          {% if menu.footerItem.badge %}
+            <span class="guide-bar__badge">{{ menu.footerItem.badge }}</span>
+          {% endif %}
+          <span class="guide-bar__cap" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+  {% endif %}
+</nav>

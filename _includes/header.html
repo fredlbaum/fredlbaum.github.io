@@ -1,0 +1,20 @@
+<header class="site-header">
+  <div class="container">
+    <div class="site-header__brand">
+      <a class="site-title" href="/">
+        <span>{{ site.title }}</span>
+      </a>
+      {% if site.tagline %}
+        <span class="site-tagline">// {{ site.tagline }}</span>
+      {% endif %}
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/">Interface</a>
+      <a href="/posts/">Broadcasts</a>
+      <a href="/about/">About</a>
+      {% if site.social_url %}
+        <a href="{{ site.social_url }}" target="_blank" rel="noopener">GitHub</a>
+      {% endif %}
+    </nav>
+  </div>
+</header>

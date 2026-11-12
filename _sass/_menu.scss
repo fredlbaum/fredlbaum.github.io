@@ -1,0 +1,361 @@
+@use "variables" as *;
+
+// ── Retro Guide Menu Container ───────────────────────────────────────────
+.guide-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 0 60px 0;
+  position: relative;
+  min-height: calc(100vh - 160px);
+}
+
+.guide-menu {
+  display: flex;
+  flex-direction: column;
+  gap: $bar-gap;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 800px;
+}
+
+// ── Base Pill Bar ────────────────────────────────────────────────────────
+.guide-menu__item {
+  position: relative;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.guide-bar {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  height: $bar-height;
+  width: $bar-default-width;
+  padding: 0 48px 0 24px;
+  background-color: var(--bar-color, #1b1e4b);
+  color: var(--bar-text, #ffffff);
+  border-radius: $radius-pill;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(18, 18, 18, 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: width $transition-smooth,
+              box-shadow $transition-fast,
+              transform $transition-fast;
+  white-space: nowrap;
+  user-select: none;
+  overflow: visible;
+
+  &:hover,
+  &:focus-visible,
+  .guide-menu__item.is-active & {
+    box-shadow: 0 8px 24px rgba(18, 18, 18, 0.22),
+                inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    outline: none;
+  }
+}
+
+.guide-bar__label {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+// ── Circular Terminal Cap ────────────────────────────────────────────────
+.guide-bar__cap {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: $bar-height;
+  height: $bar-height;
+  border-radius: 50%;
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+
+  &::after {
+    content: "";
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: $screen-yellow;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+    transition: transform $transition-fast;
+  }
+}
+
+.guide-bar:hover .guide-bar__cap::after,
+.guide-menu__item.is-active .guide-bar__cap::after {
+  transform: scale(1.15);
+}
+
+// ── Behavior A: Horizontal Line Extension ────────────────────────────────
+.guide-menu__item--extension {
+  .guide-bar {
+    &:hover,
+    &:focus-visible,
+    &.is-hovered {
+      width: clamp(480px, 60vw, 680px);
+    }
+  }
+
+  .guide-bar__extension {
+    display: inline-flex;
+    align-items: center;
+    opacity: 0;
+    max-width: 0;
+    transform: translateX(-12px);
+    overflow: hidden;
+    white-space: nowrap;
+    margin-left: 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.95);
+    transition: opacity 0.25s ease 0.08s,
+                max-width 0.32s cubic-bezier(0.2, 0.9, 0.3, 1),
+                transform 0.28s ease 0.06s,
+                margin-left 0.28s ease;
+
+    &::before {
+      content: "//";
+      margin-right: 10px;
+      opacity: 0.6;
+      font-weight: 400;
+    }
+  }
+
+  .guide-bar:hover .guide-bar__extension,
+  .guide-bar:focus-visible .guide-bar__extension,
+  .guide-bar.is-hovered .guide-bar__extension {
+    opacity: 1;
+    max-width: 380px;
+    transform: translateX(0);
+    margin-left: 18px;
+  }
+}
+
+// ── Behavior B: Vertical Tiled Pop-Up Stack ──────────────────────────────
+.guide-menu__item--vertical {
+  // When hovered, the base bar extends horizontally to the base of the stack
+  &:hover .guide-bar,
+  &:focus-within .guide-bar,
+  &.is-active .guide-bar {
+    width: 390px;
+  }
+
+  // Secondary vertical stack
+  .guide-popup-stack {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 170px;
+    display: flex;
+    flex-direction: column-reverse; // Lowest sub-item is just above base, stacking upward
+    gap: 8px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(16px);
+    transition: opacity 0.25s ease,
+                transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1),
+                visibility 0.25s;
+    z-index: 50;
+  }
+
+  &:hover .guide-popup-stack,
+  &:focus-within .guide-popup-stack,
+  &.is-active .guide-popup-stack {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+
+.guide-sub-bar {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  height: $bar-height-sm;
+  width: 320px;
+  padding: 0 42px 0 20px;
+  background-color: var(--sub-color, #2e7d32);
+  color: var(--sub-text, #ffffff);
+  border-radius: $radius-pill;
+  box-shadow: 0 4px 12px rgba(18, 18, 18, 0.16),
+              inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transform: translateY(18px) scale(0.96);
+  opacity: 0;
+  transition: transform 0.32s cubic-bezier(0.34, 1.3, 0.64, 1),
+              opacity 0.24s ease,
+              box-shadow $transition-fast,
+              width $transition-smooth;
+  transition-delay: calc(var(--sub-index, 0) * 45ms);
+  white-space: nowrap;
+
+  .guide-menu__item--vertical:hover &,
+  .guide-menu__item--vertical:focus-within &,
+  .guide-menu__item--vertical.is-active & {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  &:hover,
+  &:focus-visible {
+    width: 360px;
+    box-shadow: 0 6px 18px rgba(18, 18, 18, 0.26),
+                inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    outline: none;
+  }
+}
+
+.guide-sub-bar__label {
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.guide-sub-bar__tagline {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-left: 10px;
+  opacity: 0.85;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.guide-sub-bar__cap {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: $bar-height-sm;
+  height: $bar-height-sm;
+  border-radius: 50%;
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+
+  &::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $screen-yellow;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// ── Anchored Footer Element: "THE GUIDE" ──────────────────────────────────
+.guide-menu__footer {
+  margin-top: 28px;
+  padding-top: 24px;
+  position: relative;
+  align-self: flex-start;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 3px;
+    background-color: rgba(18, 18, 18, 0.2);
+    border-radius: 2px;
+  }
+}
+
+.guide-bar--footer {
+  width: 310px;
+  background-color: $color-spectrum-dark;
+  color: $screen-yellow;
+  border: 2px solid $screen-dark;
+  transition: width $transition-smooth, transform $transition-fast;
+
+  .guide-bar__cap {
+    background-color: $color-spectrum-dark;
+
+    &::after {
+      background-color: #E53935; // Iconic Hitchhiker Red button accent!
+    }
+  }
+
+  .guide-bar__badge {
+    margin-left: 14px;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    color: #E53935;
+    background-color: rgba(229, 57, 53, 0.15);
+    padding: 3px 10px;
+    border-radius: 9999px;
+    border: 1px solid rgba(229, 57, 53, 0.4);
+    text-transform: uppercase;
+  }
+
+  &:hover,
+  &:focus-visible {
+    width: 360px;
+    background-color: #000000;
+  }
+}
+
+// ── Mobile Responsive Fallbacks ──────────────────────────────────────────
+@media (max-width: 680px) {
+  .guide-menu {
+    gap: 8px;
+  }
+
+  .guide-bar {
+    width: 240px;
+    height: 44px;
+    padding: 0 40px 0 18px;
+  }
+
+  .guide-bar__label {
+    font-size: 0.95rem;
+  }
+
+  .guide-bar__cap {
+    width: 44px;
+    height: 44px;
+  }
+
+  .guide-menu__item--extension .guide-bar:hover,
+  .guide-menu__item--extension .guide-bar:focus-visible {
+    width: calc(100vw - 48px);
+  }
+
+  .guide-menu__item--vertical {
+    &:hover .guide-bar,
+    &:focus-within .guide-bar {
+      width: 260px;
+    }
+
+    .guide-popup-stack {
+      left: 10px;
+      bottom: calc(100% + 6px);
+      width: calc(100vw - 56px);
+    }
+  }
+
+  .guide-sub-bar {
+    width: 100%;
+    height: 36px;
+  }
+
+  .guide-bar--footer {
+    width: 270px;
+  }
+}

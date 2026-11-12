@@ -1,0 +1,111 @@
+{
+  "items": [
+    {
+      "id": "characters",
+      "label": "CHARACTERS",
+      "behavior": "vertical_stack",
+      "color": "#1B1E4B",
+      "textColor": "#FFFFFF",
+      "url": "#characters",
+      "subItems": [
+        {
+          "label": "ARTHUR DENT",
+          "color": "#D4881E",
+          "textColor": "#FFFFFF",
+          "tagline": "Unwitting Cosmic Traveler",
+          "url": "/guide/arthur-dent/"
+        },
+        {
+          "label": "FORD PREFECT",
+          "color": "#00838F",
+          "textColor": "#FFFFFF",
+          "tagline": "Field Researcher, Betelgeuse Five",
+          "url": "/guide/ford-prefect/"
+        },
+        {
+          "label": "MARVIN",
+          "color": "#546E7A",
+          "textColor": "#FFFFFF",
+          "tagline": "Paranoid Android (Brain Size: Planet)",
+          "url": "/guide/marvin/"
+        },
+        {
+          "label": "TRILLIAN",
+          "color": "#8E24AA",
+          "textColor": "#FFFFFF",
+          "tagline": "Astrophysicist & Pilot",
+          "url": "/guide/trillian/"
+        },
+        {
+          "label": "ZAPHOD BEEBLEBROX",
+          "color": "#E65100",
+          "textColor": "#FFFFFF",
+          "tagline": "President of the Galaxy",
+          "url": "/guide/zaphod-beeblebrox/"
+        }
+      ]
+    },
+    {
+      "id": "universe",
+      "label": "UNIVERSE",
+      "behavior": "horizontal_extension",
+      "color": "#1565C0",
+      "textColor": "#FFFFFF",
+      "extensionText": "REALLY BIG",
+      "url": "/guide/universe/"
+    },
+    {
+      "id": "heart-of-gold",
+      "label": "HEART OF GOLD",
+      "behavior": "horizontal_extension",
+      "color": "#007A87",
+      "textColor": "#FFFFFF",
+      "extensionText": "EVERYWHERE AT ONCE",
+      "url": "/guide/heart-of-gold/"
+    },
+    {
+      "id": "earth",
+      "label": "EARTH",
+      "behavior": "horizontal_extension",
+      "color": "#1B7E43",
+      "textColor": "#FFFFFF",
+      "extensionText": "MOSTLY HARMLESS",
+      "url": "/guide/earth/"
+    },
+    {
+      "id": "towels",
+      "label": "TOWELS",
+      "behavior": "horizontal_extension",
+      "color": "#689F38",
+      "textColor": "#FFFFFF",
+      "extensionText": "ALWAYS KNOW WHERE IT IS",
+      "url": "/guide/towels/"
+    },
+    {
+      "id": "vogons",
+      "label": "VOGONS",
+      "behavior": "horizontal_extension",
+      "color": "#D84315",
+      "textColor": "#FFFFFF",
+      "extensionText": "WORST POETRY IN THE GALAXY",
+      "url": "/guide/vogons/"
+    },
+    {
+      "id": "milliways",
+      "label": "MILLIWAYS",
+      "behavior": "horizontal_extension",
+      "color": "#B71C1C",
+      "textColor": "#FFFFFF",
+      "extensionText": "AT THE END OF THE UNIVERSE",
+      "url": "/guide/milliways/"
+    }
+  ],
+  "footerItem": {
+    "id": "guide",
+    "label": "THE GUIDE",
+    "badge": "DON'T PANIC",
+    "color": "#141414",
+    "textColor": "#FFEE33",
+    "url": "/posts/"
+  }
+}

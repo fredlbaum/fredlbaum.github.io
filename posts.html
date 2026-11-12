@@ -1,0 +1,39 @@
+---
+layout: page
+title: Transmissions & Broadcasts
+description: "Chronological archive of broadcasts and articles from K0FLB."
+pagination:
+  data: collections.posts
+  size: 10
+  reverse: true
+  alias: posts
+  generatePageOnEmptyData: true
+permalink: "{% if pagination.pageNumber > 0 %}/posts/page/{{ pagination.pageNumber | plus: 1 }}/{% else %}/posts/{% endif %}"
+---
+
+<ul style="list-style: none; margin-left: 0; padding: 0;">
+  {% for post in posts %}
+    <li style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #EEE;">
+      <h2 style="font-size: 1.4rem; margin-bottom: 4px;">
+        <a href="{{ post.url }}" style="text-decoration: none; color: #1565C0;">{{ post.data.title }}</a>
+      </h2>
+      <div style="font-family: monospace; font-size: 0.85rem; color: #666; margin-bottom: 8px;">
+        {{ post.date | date_formatted }}
+      </div>
+      {% if post.data.description %}
+        <p style="margin-bottom: 0; font-size: 1rem; color: #444;">{{ post.data.description }}</p>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+{% if pagination.pages.size > 1 %}
+  <nav aria-label="Pagination" style="display: flex; gap: 16px; margin-top: 32px;">
+    {% if pagination.href.previous %}
+      <a href="{{ pagination.href.previous }}">&larr; Newer Transmissions</a>
+    {% endif %}
+    {% if pagination.href.next %}
+      <a href="{{ pagination.href.next }}">Older Transmissions &rarr;</a>
+    {% endif %}
+  </nav>
+{% endif %}

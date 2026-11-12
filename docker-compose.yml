@@ -1,0 +1,15 @@
+services:
+  eleventy:
+    image: node:22-slim
+    working_dir: /srv/site
+    command: sh -c "npm install && rm -rf _site/* && npx @11ty/eleventy --serve --port=4000 --host=0.0.0.0"
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/srv/site
+      - node_modules:/srv/site/node_modules
+    environment:
+      - ELEVENTY_POLL=1
+
+volumes:
+  node_modules:

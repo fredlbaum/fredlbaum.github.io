@@ -1,0 +1,68 @@
+[
+  {
+    "slug": "arthur-dent",
+    "title": "Arthur Dent",
+    "subtitle": "Unwitting Cosmic Traveler",
+    "content": "Arthur Dent is an ordinary human who escaped the destruction of Earth with nothing but his bathrobe, a digital watch, and a towel. Prone to tea cravings and cosmic bewilderment."
+  },
+  {
+    "slug": "ford-prefect",
+    "title": "Ford Prefect",
+    "subtitle": "Field Researcher, Betelgeuse Five",
+    "content": "Ford Prefect spent fifteen years stranded on Earth posing as an out-of-work actor before rescuing Arthur Dent. Senior roving researcher for The Hitchhiker's Guide to the Galaxy."
+  },
+  {
+    "slug": "marvin",
+    "title": "Marvin the Paranoid Android",
+    "subtitle": "Genuine People Personality (GPP)",
+    "content": "A prototype robot equipped with Genuine People Personalities. Marvin possesses a brain the size of a planet, yet is almost perpetually assigned to trivial tasks like opening doors."
+  },
+  {
+    "slug": "trillian",
+    "title": "Trillian (Tricia McMillan)",
+    "subtitle": "Astrophysicist & Navigator",
+    "content": "Brilliant Earth mathematician and astrophysicist who left Earth with Zaphod Beeblebrox before its demolition. The voice of reason aboard the Heart of Gold."
+  },
+  {
+    "slug": "zaphod-beeblebrox",
+    "title": "Zaphod Beeblebrox",
+    "subtitle": "Ex-President of the Galaxy",
+    "content": "Two heads, three arms, completely outrageous, and inventor of the Pan Galactic Gargle Blaster. Stole the Infinite Improbability Drive flagship Heart of Gold at its christening."
+  },
+  {
+    "slug": "universe",
+    "title": "The Universe",
+    "subtitle": "Really, Really Big",
+    "content": "There is a theory which states that if ever anyone discovers exactly what the Universe is for and why it is here, it will instantly disappear and be replaced by something even more bizarre and inexplicable. There is another theory which states that this has already happened."
+  },
+  {
+    "slug": "heart-of-gold",
+    "title": "The Heart of Gold",
+    "subtitle": "Infinite Improbability Drive Flagship",
+    "content": "The starship powered by the revolutionary Infinite Improbability Drive, capable of traversing vast galactic distances without all that tedious mucking about in hyperspace."
+  },
+  {
+    "slug": "earth",
+    "title": "Earth",
+    "subtitle": "Mostly Harmless",
+    "content": "Originally classified in The Guide simply as 'Harmless'. After fifteen years of intensive research by Ford Prefect, the entry was expanded to 'Mostly Harmless'."
+  },
+  {
+    "slug": "towels",
+    "title": "Towels",
+    "subtitle": "The Most Massively Useful Thing",
+    "content": "Any man who can hitch the length and breadth of the Galaxy, rough it, slum it, struggle against terrible odds, win through and still know where his towel is, is clearly a man to be reckoned with."
+  },
+  {
+    "slug": "vogons",
+    "title": "Vogons",
+    "subtitle": "Poetry Warning",
+    "content": "Vogons are one of the most unpleasant races in the Galaxy. Not actually evil, but bad-tempered, bureaucratic, officious, and callous. On no account allow a Vogon to read poetry to you."
+  },
+  {
+    "slug": "milliways",
+    "title": "Milliways",
+    "subtitle": "The Restaurant at the End of the Universe",
+    "content": "Built upon the fragmented remains of an eventual ruined planet, enclosed in a vast time-lock bubble, Milliways allows guests to dine while observing the Gnab Gib and the total end of all creation."
+  }
+]
