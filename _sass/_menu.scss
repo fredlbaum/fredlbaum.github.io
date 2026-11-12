@@ -142,27 +142,28 @@
   }
 }
 
-// ── Behavior B: Vertical Tiled Pop-Up Stack ──────────────────────────────
+// ── Behavior B: Vertical Tiled Sub-Menu (Right-Side Cascade) ─────────────
 .guide-menu__item--vertical {
-  // When hovered, the base bar extends horizontally to the base of the stack
+  // When hovered, the base bar extends horizontally to form a bridge to the sub-column
   &:hover .guide-bar,
   &:focus-within .guide-bar,
   &.is-active .guide-bar {
-    width: 390px;
+    width: 380px;
   }
 
-  // Secondary vertical stack
+  // Secondary vertical stack cascading downward to the right
   .guide-popup-stack {
     position: absolute;
-    bottom: calc(100% + 10px);
-    left: 170px;
+    top: 0;
+    left: 360px;
     display: flex;
-    flex-direction: column-reverse; // Lowest sub-item is just above base, stacking upward
+    flex-direction: column; // Cascades downward alongside menu
     gap: 8px;
+    padding-left: 20px; // Bridge buffer so hover never flickers
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transform: translateY(16px);
+    transform: translateX(-15px);
     transition: opacity 0.25s ease,
                 transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1),
                 visibility 0.25s;
@@ -175,7 +176,7 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
@@ -184,17 +185,17 @@
   align-items: center;
   position: relative;
   height: $bar-height-sm;
-  width: 320px;
+  width: 330px;
   padding: 0 42px 0 20px;
   background-color: var(--sub-color, #2e7d32);
   color: var(--sub-text, #ffffff);
   border-radius: $radius-pill;
   box-shadow: 0 4px 12px rgba(18, 18, 18, 0.16),
               inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  transform: translateY(18px) scale(0.96);
+  transform: translateX(-15px) scale(0.97);
   opacity: 0;
-  transition: transform 0.32s cubic-bezier(0.34, 1.3, 0.64, 1),
-              opacity 0.24s ease,
+  transition: transform 0.3s cubic-bezier(0.34, 1.25, 0.64, 1),
+              opacity 0.22s ease,
               box-shadow $transition-fast,
               width $transition-smooth;
   transition-delay: calc(var(--sub-index, 0) * 45ms);
@@ -203,7 +204,7 @@
   .guide-menu__item--vertical:hover &,
   .guide-menu__item--vertical:focus-within &,
   .guide-menu__item--vertical.is-active & {
-    transform: translateY(0) scale(1);
+    transform: translateX(0) scale(1);
     opacity: 1;
   }
 
@@ -312,7 +313,7 @@
 }
 
 // ── Mobile Responsive Fallbacks ──────────────────────────────────────────
-@media (max-width: 680px) {
+@media (max-width: 768px) {
   .guide-menu {
     gap: 8px;
   }
@@ -338,21 +339,31 @@
   }
 
   .guide-menu__item--vertical {
+    display: flex;
+    flex-direction: column;
+
     &:hover .guide-bar,
-    &:focus-within .guide-bar {
-      width: 260px;
+    &:focus-within .guide-bar,
+    &.is-active .guide-bar {
+      width: 100%;
     }
 
     .guide-popup-stack {
-      left: 10px;
-      bottom: calc(100% + 6px);
-      width: calc(100vw - 56px);
+      position: static;
+      left: auto;
+      top: auto;
+      padding-left: 14px;
+      margin-top: 8px;
+      transform: none;
+      width: 100%;
+      gap: 6px;
     }
   }
 
   .guide-sub-bar {
     width: 100%;
-    height: 36px;
+    height: 38px;
+    transform: none !important;
   }
 
   .guide-bar--footer {
