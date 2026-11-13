@@ -51,6 +51,13 @@
           "textColor": "#FFFFFF",
           "tagline": "CW Paddles, Microphones & DSP",
           "url": "/gear/#accessories"
+        },
+        {
+          "label": "RETRO COMPUTING",
+          "color": "#689F38",
+          "textColor": "#FFFFFF",
+          "tagline": "Commodore & Vintage Machines",
+          "url": "/gear/#computers"
         }
       ]
     },

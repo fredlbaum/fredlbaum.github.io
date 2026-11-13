@@ -3,5 +3,6 @@
   { "id": "antennas", "title": "Antenna Farm" },
   { "id": "portable", "title": "Portable & QRP" },
   { "id": "power", "title": "Power & Batteries" },
-  { "id": "accessories", "title": "Keys & Audio" }
+  { "id": "accessories", "title": "Keys & Audio" },
+  { "id": "computers", "title": "Retro Computing" }
 ]

@@ -72,7 +72,7 @@ Each piece of station gear is its own Markdown file in `_gear/`. It gets its own
 
    Optional details: settings, mods, impressions.
    ```
-   * `category` must be one of `transceivers`, `antennas`, `portable`, `power`, `accessories` (defined in `_data/gear_categories.json`; these also match the GEAR menu's pop-up links).
+   * `category` must be one of `transceivers`, `antennas`, `portable`, `power`, `accessories`, `computers` (defined in `_data/gear_categories.json`; these also match the GEAR menu's pop-up links).
    * `model`, `bands`, `status`, `acquired` are optional; blank or missing ones are simply not shown.
    * `order` sorts items within a category (lower first); ties sort by title.
 4. Commit to `main`.

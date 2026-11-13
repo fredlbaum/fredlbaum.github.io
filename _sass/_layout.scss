@@ -136,6 +136,58 @@
     border-radius: 4px;
   }
 
+  .post-body {
+    h2, h3 {
+      margin: 32px 0 10px 0;
+    }
+
+    a {
+      color: #1565C0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  figure {
+    margin: 28px 0;
+  }
+
+  figcaption {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 8px;
+
+    a {
+      color: #1565C0;
+      text-decoration: underline;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 8px 12px;
+    border-bottom: 1px solid #EEE;
+  }
+
+  td:first-child {
+    white-space: nowrap;
+  }
+
   pre {
     background-color: #181A20;
     color: #E6E6E6;
