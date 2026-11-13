@@ -14,16 +14,42 @@
           <span class="guide-bar__cap" aria-hidden="true"></span>
         </a>
 
-        {% if item.subItems %}
+        {%- comment -%}
+          Sub-items come either from a collection (`subItemsFrom`, e.g. one bar per _gear/ file,
+          colored by cycling `subItemColors`) or from a hand-written `subItems` list.
+        {%- endcomment -%}
+        {%- if item.subItemsFrom -%}
+          {%- assign subs = collections[item.subItemsFrom] -%}
+        {%- else -%}
+          {%- assign subs = item.subItems -%}
+        {%- endif %}
+        {% if subs.size > 0 %}
           <div class="guide-popup-stack" role="menu" aria-label="{{ item.label }} sub-menu">
-            {% for sub in item.subItems %}
+            {% for sub in subs %}
+              {%- if item.subItemsFrom -%}
+                {%- assign sub_label = sub.data.menuLabel | default: sub.data.title -%}
+                {%- assign sub_tagline = sub.data.menuTagline -%}
+                {%- unless sub_tagline -%}
+                  {%- for cat in gear_categories -%}
+                    {%- if cat.id == sub.data.category %}{% assign sub_tagline = cat.title %}{% endif -%}
+                  {%- endfor -%}
+                {%- endunless -%}
+                {%- assign color_index = forloop.index0 | modulo: item.subItemColors.size -%}
+                {%- assign sub_color = item.subItemColors[color_index] -%}
+                {%- assign sub_text = "#FFFFFF" -%}
+              {%- else -%}
+                {%- assign sub_label = sub.label -%}
+                {%- assign sub_tagline = sub.tagline -%}
+                {%- assign sub_color = sub.color -%}
+                {%- assign sub_text = sub.textColor -%}
+              {%- endif %}
               <a href="{{ sub.url }}"
                  class="guide-sub-bar"
-                 style="--sub-color: {{ sub.color }}; --sub-text: {{ sub.textColor }}; --sub-index: {{ forloop.index0 }};"
+                 style="--sub-color: {{ sub_color }}; --sub-text: {{ sub_text }}; --sub-index: {{ forloop.index0 }};"
                  role="menuitem">
-                <span class="guide-sub-bar__label">{{ sub.label }}</span>
-                {% if sub.tagline %}
-                  <span class="guide-sub-bar__tagline">{{ sub.tagline }}</span>
+                <span class="guide-sub-bar__label">{{ sub_label }}</span>
+                {% if sub_tagline %}
+                  <span class="guide-sub-bar__tagline">{{ sub_tagline }}</span>
                 {% endif %}
                 <span class="guide-sub-bar__cap" aria-hidden="true"></span>
               </a>

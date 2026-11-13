@@ -158,6 +158,7 @@
     left: 360px;
     display: flex;
     flex-direction: column; // Cascades downward alongside menu
+    align-items: flex-start; // Each bar sizes to its own text
     gap: 8px;
     padding-left: 20px; // Bridge buffer so hover never flickers
     opacity: 0;
@@ -185,7 +186,9 @@
   align-items: center;
   position: relative;
   height: $bar-height-sm;
-  width: 330px;
+  // Grow to fit the label + tagline (gear item names vary), within bounds
+  min-width: 330px;
+  max-width: 520px;
   padding: 0 42px 0 20px;
   background-color: var(--sub-color, #2e7d32);
   color: var(--sub-text, #ffffff);
@@ -197,7 +200,7 @@
   transition: transform 0.3s cubic-bezier(0.34, 1.25, 0.64, 1),
               opacity 0.22s ease,
               box-shadow $transition-fast,
-              width $transition-smooth;
+              padding-right $transition-smooth;
   transition-delay: calc(var(--sub-index, 0) * 45ms);
   white-space: nowrap;
 
@@ -210,7 +213,7 @@
 
   &:hover,
   &:focus-visible {
-    width: 360px;
+    padding-right: 72px; // Extends the bar 30px, whatever its width
     box-shadow: 0 6px 18px rgba(18, 18, 18, 0.26),
                 inset 0 1px 0 rgba(255, 255, 255, 0.35);
     outline: none;
@@ -222,7 +225,9 @@
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  flex-shrink: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .guide-sub-bar__tagline {
@@ -231,16 +236,18 @@
   letter-spacing: 0.04em;
   margin-left: 10px;
   opacity: 0.85;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex-shrink: 1000; // At max-width, truncate the tagline before the label
 }
 
 .guide-sub-bar__cap {
   position: absolute;
   right: 0;
   top: 0;
-  width: $bar-height-sm;
-  height: $bar-height-sm;
+  height: 100%; // Match the bar (38px on mobile), not a fixed size that overhangs it
+  aspect-ratio: 1;
   border-radius: 50%;
   background-color: inherit;
   display: flex;
@@ -345,6 +352,7 @@
   .guide-menu__item--vertical {
     display: flex;
     flex-direction: column;
+    align-self: stretch; // Menu width, not content width, so long sub-bar labels truncate
 
     &:hover .guide-bar,
     &:focus-within .guide-bar,
@@ -366,8 +374,15 @@
 
   .guide-sub-bar {
     width: 100%;
+    min-width: 0;
+    max-width: none;
     height: 38px;
     transform: none !important;
+  }
+
+  // Too narrow for label + tagline; keep the item name readable
+  .guide-sub-bar__tagline {
+    display: none;
   }
 
   .guide-bar--footer {

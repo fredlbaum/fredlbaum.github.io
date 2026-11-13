@@ -75,6 +75,7 @@ Each piece of station gear is its own Markdown file in `_gear/`. It gets its own
    * `category` must be one of `transceivers`, `antennas`, `portable`, `power`, `accessories`, `computers` (defined in `_data/gear_categories.json`; these also match the GEAR menu's pop-up links).
    * `model`, `bands`, `status`, `acquired` are optional; blank or missing ones are simply not shown.
    * `order` sorts items within a category (lower first); ties sort by title.
+   * Every gear item automatically gets a bar in the home-screen GEAR pop-up. Optional `menuLabel` and `menuTagline` set short text for that bar (defaults: the title, and the category name).
 4. Commit to `main`.
 
 ---
@@ -95,4 +96,4 @@ The interactive menu items on the home screen are configured in `_data/menu.json
 
 * To change the label, URL, or color of any pill bar, edit `_data/menu.json`.
 * For horizontal extension items (Behavior A): change `label`, `extensionText`, and `url`.
-* For vertical popup items (Behavior B): change `label`, `subItems`, colors, and URLs.
+* For vertical popup items (Behavior B): change `label` and either list `subItems` by hand (each with `label`, `tagline`, `color`, `url`), or set `subItemsFrom` to a collection name to generate one bar per page. The GEAR item uses `"subItemsFrom": "gear"`, cycling through `subItemColors`.

@@ -5,6 +5,8 @@ description: "FPGA-powered, real-hardware recreation of the C64, the first new C
 model: "Commodore 64 Ultimate (Starlight Edition)"
 status: "In Service"
 order: 1
+menuLabel: "Commodore 64 Ultimate"
+menuTagline: "Starlight Edition"
 ---
 
 The Commodore 64 is back. Not as an emulator in a shrunken shell, but as a full-size, real-hardware recreation sold under the actual Commodore name. I picked up the **Starlight Edition**, the translucent one that lights up, and wanted to write down what this machine is and what's inside it.
