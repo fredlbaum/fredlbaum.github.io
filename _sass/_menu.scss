@@ -278,14 +278,18 @@
 }
 
 .guide-bar--footer {
-  width: 310px;
+  width: 340px;
   background-color: $color-spectrum-dark;
   color: $screen-yellow;
   border: 2px solid $screen-dark;
   transition: width $transition-smooth, transform $transition-fast;
 
+  // Fit the cap inside the 2px border (a fixed bar-height cap overhangs it),
+  // and inherit the bar color so it darkens with the bar on hover.
   .guide-bar__cap {
-    background-color: $color-spectrum-dark;
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1;
 
     &::after {
       background-color: #E53935; // Iconic Hitchhiker Red button accent!
@@ -307,7 +311,7 @@
 
   &:hover,
   &:focus-visible {
-    width: 360px;
+    width: 380px;
     background-color: #000000;
   }
 }
@@ -367,6 +371,7 @@
   }
 
   .guide-bar--footer {
-    width: 270px;
+    width: 300px;
+    max-width: calc(100vw - 48px);
   }
 }

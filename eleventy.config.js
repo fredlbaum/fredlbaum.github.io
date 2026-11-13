@@ -52,6 +52,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addExtension("scss", {
     outputFileExtension: "css",
     useLayouts: false,
+    // main.scss itself rarely changes; without this, edits to _sass/ partials
+    // are served from Eleventy's compile cache during `--serve`.
+    compileOptions: { cache: false },
     compile(inputContent, inputPath) {
       if (path.basename(inputPath).startsWith("_")) return;
       const result = sass.compileString(inputContent, {
