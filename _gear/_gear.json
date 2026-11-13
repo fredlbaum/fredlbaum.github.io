@@ -1,0 +1,4 @@
+{
+  "layout": "gear-item",
+  "permalink": "/gear/{{ page.fileSlug }}/"
+}

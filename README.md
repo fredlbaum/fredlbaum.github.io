@@ -10,7 +10,7 @@ The official website and transmission relay for **K0FLB** (Fred L. Baum), featur
 * **Styling**: Dart Sass with `@use` modules and fine-grained dependency tracking.
 * **Hosting**: GitHub Pages via automated GitHub Actions (`.github/workflows/deploy.yml`).
 * **Interactive Interface**: Vanilla CSS & JavaScript interactive rainbow pill menu with horizontal extensions (Behavior A) and cascading vertical pop-up stacks (Behavior B).
-* **Zero-Tooling Content Pipeline**: Content contributors can publish directly from GitHub by adding markdown files to `_posts/`.
+* **Zero-Tooling Content Pipeline**: Content contributors can publish directly from GitHub by adding markdown files to `_posts/` (blog), `_projects/` (projects), or `_gear/` (station gear). See `usage.md`.
 
 ---
 

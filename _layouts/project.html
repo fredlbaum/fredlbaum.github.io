@@ -1,0 +1,24 @@
+---
+layout: default
+body_class: project-screen
+---
+<div class="content-area">
+  <div class="container">
+    <article class="prose-card">
+      <header>
+        <h1>{{ title }}</h1>
+        <div class="post-meta">
+          <time datetime="{{ page.date | date_to_xmlschema }}">
+            {{ page.date | date_formatted }}
+          </time>
+          {% if status %} &middot; <span class="project-status">{{ status }}</span>{% endif %}
+          {% if repo %} &middot; <a href="{{ repo }}" target="_blank" rel="noopener">Source</a>{% endif %}
+        </div>
+      </header>
+      <div class="post-body">
+        {{ content }}
+      </div>
+      <p class="project-back"><a href="/projects/">&larr; All Projects</a></p>
+    </article>
+  </div>
+</div>

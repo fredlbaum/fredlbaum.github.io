@@ -6,7 +6,7 @@ import site from "./_data/site.js";
 
 export default function (eleventyConfig) {
   // ── Ignored files (not published) ──────────────────────────────────────────
-  for (const f of ["README.md", "usage.md", "CLAUDE.md", "LICENSE", "_posts/_template.md"]) {
+  for (const f of ["README.md", "usage.md", "CLAUDE.md", "LICENSE", "_posts/_template.md", "_projects/_template.md", "_gear/_template.md"]) {
     eleventyConfig.ignores.add(f);
   }
 
@@ -24,7 +24,8 @@ export default function (eleventyConfig) {
   }
 
   // ── Liquid Configuration & Filters ────────────────────────────────────────
-  eleventyConfig.setLiquidOptions({ timezoneOffset: 0 });
+  // jsTruthy: empty strings (e.g. `repo: ""` left blank from a template) count as false in {% if %}
+  eleventyConfig.setLiquidOptions({ timezoneOffset: 0, jsTruthy: true });
   eleventyConfig.addFilter("date_to_xmlschema", (d) => new Date(d).toISOString());
   eleventyConfig.addFilter("date_formatted", (d) => {
     return new Date(d).toLocaleDateString("en-US", {
@@ -38,6 +39,13 @@ export default function (eleventyConfig) {
     const m = html.match(/<p[^>]*>([\s\S]*?)<\/p>/);
     return m ? m[1] : "";
   });
+
+  // ── Gear Collection (sorted by `order`, then title) ───────────────────────
+  eleventyConfig.addCollection("gear", (api) =>
+    api.getFilteredByGlob("_gear/*.md").sort(
+      (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99) || a.data.title.localeCompare(b.data.title),
+    ),
+  );
 
   // ── Dart Sass Compilation with Dependency Tracking ─────────────────────────
   eleventyConfig.addTemplateFormats("scss");

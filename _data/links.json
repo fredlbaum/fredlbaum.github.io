@@ -1,0 +1,32 @@
+[
+  {
+    "category": "Local Hacker Groups",
+    "links": [
+      {
+        "title": "NoCo 2600",
+        "url": "https://noco2600.org/",
+        "description": "Northern Colorado 2600 meeting. Security professionals and enthusiasts sharing knowledge, tools, and research monthly."
+      },
+      {
+        "title": "DC970",
+        "url": "https://dc970.org/",
+        "description": "Northern Colorado DEF CON group (area code 970). Monthly meetups for the local security community."
+      }
+    ]
+  },
+  {
+    "category": "Security Podcasts",
+    "links": [
+      {
+        "title": "Darknet Diaries",
+        "url": "https://darknetdiaries.com/",
+        "description": "Jack Rhysider's true stories from the dark side of the Internet: hackers, breaches, and cybercrime."
+      },
+      {
+        "title": "Security Now",
+        "url": "https://twit.tv/shows/security-now",
+        "description": "Steve Gibson and Leo Laporte break down the week's security news and how the technology works. Full episode archive and transcripts at <a href=\"https://www.grc.com/securitynow.htm\" target=\"_blank\" rel=\"noopener\">GRC.com</a>."
+      }
+    ]
+  }
+]

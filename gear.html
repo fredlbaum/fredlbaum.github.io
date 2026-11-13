@@ -1,0 +1,38 @@
+---
+layout: page
+title: Station Gear
+description: "Transceivers, antennas, and station hardware in use at K0FLB."
+permalink: /gear/
+---
+
+<p>Welcome to the <strong>K0FLB</strong> equipment profile. Below is an overview of the current primary transceivers, antenna farm, portable field gear, and station accessories.</p>
+
+{% for cat in gear_categories %}
+  <h2 id="{{ cat.id }}" class="category-heading">{{ cat.title }}</h2>
+  {%- assign count = 0 %}
+  <ul class="entry-list">
+    {% for item in collections.gear %}
+      {% if item.data.category == cat.id %}
+        {%- assign count = count | plus: 1 %}
+        <li class="entry-list__item">
+          <h3 class="entry-list__title">
+            <a href="{{ item.url }}">{{ item.data.title }}</a>
+          </h3>
+          {% if item.data.model or item.data.status %}
+            <div class="entry-list__meta">
+              {{ item.data.model }}
+              {% if item.data.model and item.data.status %} &middot; {% endif %}
+              {% if item.data.status %}<span class="project-status">{{ item.data.status }}</span>{% endif %}
+            </div>
+          {% endif %}
+          {% if item.data.description %}
+            <p class="entry-list__desc">{{ item.data.description }}</p>
+          {% endif %}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% if count == 0 %}<p class="entry-list__empty">Nothing logged here yet.</p>{% endif %}
+{% endfor %}
+
+<p class="project-back"><a href="/">&larr; Return to Interactive Menu</a></p>

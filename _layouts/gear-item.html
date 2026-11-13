@@ -1,0 +1,29 @@
+---
+layout: default
+body_class: gear-screen
+---
+{%- assign category_title = category -%}
+{%- for cat in gear_categories -%}
+  {%- if cat.id == category %}{% assign category_title = cat.title %}{% endif -%}
+{%- endfor -%}
+<div class="content-area">
+  <div class="container">
+    <article class="prose-card">
+      <header>
+        <h1>{{ title }}</h1>
+        <div class="post-meta">
+          <a href="/gear/#{{ category }}">{{ category_title }}</a>
+          {% if model %} &middot; {{ model }}{% endif %}
+          {% if bands %} &middot; {{ bands }}{% endif %}
+          {% if status %} &middot; <span class="project-status">{{ status }}</span>{% endif %}
+          {% if acquired %} &middot; Acquired {{ acquired | date_formatted }}{% endif %}
+        </div>
+      </header>
+      <div class="post-body">
+        {% if description %}<p class="gear-lead">{{ description }}</p>{% endif %}
+        {{ content }}
+      </div>
+      <p class="project-back"><a href="/gear/#{{ category }}">&larr; All Gear</a></p>
+    </article>
+  </div>
+</div>
