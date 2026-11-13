@@ -64,7 +64,7 @@
       "behavior": "horizontal_extension",
       "color": "#1B7E43",
       "textColor": "#FFFFFF",
-      "extensionText": "RADIO CLUBS, TOOLS & RESOURCES",
+      "extensionText": "PLACES WORTH A DETOUR",
       "url": "/links/"
     },
     {
@@ -73,7 +73,7 @@
       "behavior": "horizontal_extension",
       "color": "#D84315",
       "textColor": "#FFFFFF",
-      "extensionText": "SIGN THE STATION LOG",
+      "extensionText": "QSL? DROP ME A LINE",
       "url": "/guestbook/"
     },
     {
@@ -82,7 +82,7 @@
       "behavior": "horizontal_extension",
       "color": "#B71C1C",
       "textColor": "#FFFFFF",
-      "extensionText": "K0FLB & OPERATOR PROFILE",
+      "extensionText": "THE OPERATOR, FAMILY & DOGS",
       "url": "/about/"
     }
   ],
