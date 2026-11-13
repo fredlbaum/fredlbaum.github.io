@@ -1,0 +1,29 @@
+---
+layout: page
+---
+{{ content }}
+
+{% if entries.size > 0 %}
+  <ul class="entry-list">
+    {% for project in entries %}
+      <li class="entry-list__item">
+        <h2 class="entry-list__title">
+          <a href="{{ project.url }}">{{ project.data.title }}</a>
+        </h2>
+        <div class="entry-list__meta">
+          {{ project.date | date_formatted }}
+          {% if project.data.status %} &middot; <span class="project-status">{{ project.data.status }}</span>{% endif %}
+        </div>
+        {% if project.data.description %}
+          <p class="entry-list__desc">{{ project.data.description }}</p>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p class="entry-list__empty">No projects logged yet. Check back soon.</p>
+{% endif %}
+
+{% include "pagination-nav.html" %}
+
+<p class="archive-link"><a href="/projects/archive/">Browse the full archive &rarr;</a></p>

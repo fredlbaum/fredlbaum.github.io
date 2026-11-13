@@ -1,0 +1,41 @@
+---
+layout: default
+body_class: not-found-screen
+---
+<div class="content-area">
+  <div class="container">
+    <div class="prose-card nf">
+      <p class="nf__panic">DON'T PANIC</p>
+      <p class="nf__code">ERROR 404 &middot; PAGE NOT FOUND IN THIS SECTOR</p>
+
+      <div class="page-body">
+        {{ content }}
+      </div>
+
+      <div class="nf__stage">
+        {%- for gag in gags -%}
+          {%- if gag[1] -%}
+            {%- assign gag_file = "not-found/" | append: gag[0] | append: ".html" %}
+            <section class="nf-gag" data-gag="{{ gag[0] }}" hidden>
+              {% include gag_file %}
+            </section>
+          {%- endif -%}
+        {%- endfor %}
+      </div>
+
+      <p class="nf__controls">
+        <button type="button" class="nf__another" data-another>Try another &rarr;</button>
+        <span class="nf__which" data-which></span>
+      </p>
+
+      <div class="nf__suggest" data-suggest hidden>
+        <h2 class="category-heading">Did you mean&hellip;</h2>
+        <ul class="nf__suggest-list" data-suggest-list></ul>
+      </div>
+
+      <p class="nf__credit">With apologies to Douglas Adams.</p>
+      <p class="project-back"><a href="/">&larr; Return to Interactive Menu</a></p>
+    </div>
+  </div>
+</div>
+<script src="/assets/js/not-found.js" defer></script>

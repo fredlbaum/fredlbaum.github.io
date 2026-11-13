@@ -1,0 +1,44 @@
+---
+layout: page
+---
+{{ content }}
+
+{% if entries.size > 0 %}
+  {%- comment -%} This page's 10 items, under headings for the categories they're in {%- endcomment -%}
+  {% for cat in gear_categories %}
+    {%- assign count = 0 -%}
+    {%- for item in entries -%}
+      {%- if item.data.category == cat.id %}{% assign count = count | plus: 1 %}{% endif -%}
+    {%- endfor -%}
+    {% if count > 0 %}
+      <h2 class="category-heading">{{ cat.title }}</h2>
+      <ul class="entry-list">
+        {% for item in entries %}
+          {% if item.data.category == cat.id %}
+            <li class="entry-list__item">
+              <h3 class="entry-list__title">
+                <a href="{{ item.url }}">{{ item.data.title }}</a>
+              </h3>
+              {% if item.data.model or item.data.status %}
+                <div class="entry-list__meta">
+                  {{ item.data.model }}
+                  {% if item.data.model and item.data.status %} &middot; {% endif %}
+                  {% if item.data.status %}<span class="project-status">{{ item.data.status }}</span>{% endif %}
+                </div>
+              {% endif %}
+              {% if item.data.description %}
+                <p class="entry-list__desc">{{ item.data.description }}</p>
+              {% endif %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endfor %}
+{% else %}
+  <p class="entry-list__empty">No gear logged yet.</p>
+{% endif %}
+
+{% include "pagination-nav.html" %}
+
+<p class="archive-link"><a href="/gear/archive/">Browse the full archive &rarr;</a></p>

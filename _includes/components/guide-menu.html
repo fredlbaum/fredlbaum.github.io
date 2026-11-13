@@ -17,22 +17,31 @@
         {%- comment -%}
           Sub-items come either from a collection (`subItemsFrom`, e.g. one bar per _gear/ file,
           colored by cycling `subItemColors`) or from a hand-written `subItems` list.
+          Collection options: `subItemsNewestFirst` (reverse date order), `subItemsLimit` (max bars),
+          `subItemTagline` ("date" or "category" fallback when an entry has no menuTagline),
+          and `archive` ({ label, tagline, url, color, textColor }) for a final "see everything" bar.
         {%- endcomment -%}
         {%- if item.subItemsFrom -%}
           {%- assign subs = collections[item.subItemsFrom] -%}
+          {%- if item.subItemsNewestFirst %}{% assign subs = subs | reverse %}{% endif -%}
         {%- else -%}
           {%- assign subs = item.subItems -%}
-        {%- endif %}
-        {% if subs.size > 0 %}
+        {%- endif -%}
+        {%- assign sub_limit = item.subItemsLimit | default: subs.size %}
+        {% if subs.size > 0 or item.archive %}
           <div class="guide-popup-stack" role="menu" aria-label="{{ item.label }} sub-menu">
-            {% for sub in subs %}
+            {% for sub in subs limit: sub_limit %}
               {%- if item.subItemsFrom -%}
                 {%- assign sub_label = sub.data.menuLabel | default: sub.data.title -%}
                 {%- assign sub_tagline = sub.data.menuTagline -%}
                 {%- unless sub_tagline -%}
-                  {%- for cat in gear_categories -%}
-                    {%- if cat.id == sub.data.category %}{% assign sub_tagline = cat.title %}{% endif -%}
-                  {%- endfor -%}
+                  {%- if item.subItemTagline == "date" -%}
+                    {%- assign sub_tagline = sub.date | date_formatted -%}
+                  {%- else -%}
+                    {%- for cat in gear_categories -%}
+                      {%- if cat.id == sub.data.category %}{% assign sub_tagline = cat.title %}{% endif -%}
+                    {%- endfor -%}
+                  {%- endif -%}
                 {%- endunless -%}
                 {%- assign color_index = forloop.index0 | modulo: item.subItemColors.size -%}
                 {%- assign sub_color = item.subItemColors[color_index] -%}
@@ -54,6 +63,19 @@
                 <span class="guide-sub-bar__cap" aria-hidden="true"></span>
               </a>
             {% endfor %}
+            {% if item.archive %}
+              {%- assign archive_index = subs.size | at_most: sub_limit %}
+              <a href="{{ item.archive.url }}"
+                 class="guide-sub-bar guide-sub-bar--archive"
+                 style="--sub-color: {{ item.archive.color }}; --sub-text: {{ item.archive.textColor }}; --sub-index: {{ archive_index }};"
+                 role="menuitem">
+                <span class="guide-sub-bar__label">{{ item.archive.label }}</span>
+                {% if item.archive.tagline %}
+                  <span class="guide-sub-bar__tagline">{{ item.archive.tagline }}</span>
+                {% endif %}
+                <span class="guide-sub-bar__cap" aria-hidden="true"></span>
+              </a>
+            {% endif %}
           </div>
         {% endif %}
       </div>

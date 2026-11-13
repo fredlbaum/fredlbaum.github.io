@@ -148,6 +148,36 @@
     }
   }
 
+  // Markdown written directly in a simple page (links.md, about.md, …).
+  // Direct children only, so generated lists (blog/project/gear) keep their own styles.
+  .page-body {
+    > h2 {
+      font-size: 1.1rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1B7E43;
+      margin: 32px 0 12px 0;
+    }
+
+    > h3 {
+      font-size: 1.3rem;
+      margin: 20px 0 6px 0;
+
+      a {
+        color: #1565C0;
+      }
+    }
+
+    > p a,
+    > ul:not([class]) a, // Markdown lists only, not the generated entry/archive lists
+    > ol:not([class]) a {
+      color: #1565C0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
   img {
     max-width: 100%;
     height: auto;
@@ -285,6 +315,71 @@
 .prose-card .gear-lead {
   font-size: 1.2rem;
   color: #121212;
+}
+
+.prose-card .archive-list {
+  list-style: none;
+  margin-left: 0;
+}
+
+.archive-list__item {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid #EEE;
+
+  time {
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    color: #666;
+    min-width: 4.5em;
+  }
+
+  a {
+    color: #1565C0;
+    font-weight: 700;
+
+    &:hover,
+    &:focus-visible {
+      text-decoration: underline;
+    }
+  }
+
+  .project-status {
+    font-size: 0.8rem;
+  }
+}
+
+.prose-card .archive-link {
+  margin-top: 28px;
+  font-size: 1rem;
+
+  a {
+    color: #1565C0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.pagination-nav {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+
+  a {
+    color: #1565C0;
+    text-decoration: underline;
+  }
+}
+
+.pagination-nav__page {
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  color: #666;
 }
 
 .prose-card .project-back {

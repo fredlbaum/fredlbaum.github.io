@@ -1,0 +1,415 @@
+@use "variables" as *;
+
+// ── 404 page frame ───────────────────────────────────────────────────────
+.nf {
+  .nf__panic {
+    display: inline-block;
+    font-size: clamp(2.2rem, 7vw, 3.6rem);
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    color: $screen-yellow;
+    background-color: $screen-dark;
+    padding: 10px 26px;
+    border-radius: 18px;
+    margin-bottom: 14px;
+    transform: rotate(-2deg);
+  }
+
+  .nf__code {
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: #666;
+  }
+
+  .nf__stage {
+    margin: 24px 0 8px 0;
+  }
+
+  .nf__controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 0.9rem;
+  }
+
+  .nf__another {
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    background-color: #1565C0;
+    padding: 8px 18px;
+    border-radius: $radius-pill;
+
+    &:hover,
+    &:focus-visible {
+      background-color: #0D47A1;
+    }
+  }
+
+  .nf__which {
+    font-family: $font-mono;
+    font-size: 0.8rem;
+    color: #888;
+  }
+
+  .nf__suggest {
+    margin-top: 24px;
+  }
+
+  .nf__suggest-list a {
+    color: #1565C0;
+    text-decoration: underline;
+    font-family: $font-mono;
+  }
+
+  .nf__credit {
+    margin-top: 28px;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #888;
+  }
+}
+
+// ── Shared green-screen terminal (Guide, Deep Thought, Marvin, radio) ─────
+.nf-terminal,
+.nf-radio {
+  background-color: #0B120C;
+  color: #7CFC8A;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: inset 0 0 40px rgba(124, 252, 138, 0.08);
+}
+
+.nf-terminal__bar {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: $screen-dark;
+  background-color: $screen-yellow;
+  padding: 6px 16px;
+}
+
+.nf-terminal__body {
+  font-family: $font-mono;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  padding: 18px 20px;
+  margin: 0;
+  white-space: pre-wrap;
+  min-height: 220px;
+}
+
+.prose-card .nf-terminal p,
+.prose-card .nf-radio p {
+  color: inherit;
+  font-size: 0.95rem;
+}
+
+// The prose card styles every <pre> as a code block; these are terminal text instead
+.prose-card pre.nf-terminal__body,
+.prose-card pre.nf-radio__qso {
+  background: none;
+  color: inherit;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.prose-card pre.nf-terminal__body {
+  margin: 0;
+  padding: 18px 20px;
+}
+
+.prose-card pre.nf-radio__qso {
+  margin: 0 0 16px 0;
+  padding: 0;
+}
+
+// ── Vogon demolition notice ──────────────────────────────────────────────
+.nf-notice {
+  background-color: #FFF8C4;
+  border: 3px double #8D6E00;
+  border-radius: 6px;
+  padding: 22px 26px;
+  transition: transform 0.6s ease-in, opacity 0.6s ease-in;
+
+  .nf-notice__head {
+    font-family: $font-mono;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.08em;
+  }
+
+  .nf-notice__count strong {
+    font-size: 1.4rem;
+    color: #B71C1C;
+  }
+
+  &.is-demolished {
+    animation: nf-demolish 0.9s ease-in forwards;
+  }
+}
+
+.prose-card .nf-notice__after {
+  margin-top: 22px;
+  animation: nf-fade-in 0.6s ease;
+}
+
+@keyframes nf-demolish {
+  0%   { transform: translateX(0) rotate(0); }
+  15%  { transform: translateX(-6px) rotate(-1deg); }
+  30%  { transform: translateX(6px) rotate(1deg); }
+  45%  { transform: translateX(-4px) rotate(-1deg); }
+  100% { transform: translateY(12px) rotate(4deg) skewX(-4deg); opacity: 0.55; }
+}
+
+// ── Deep Thought ─────────────────────────────────────────────────────────
+.nf-deep__bar {
+  height: 14px;
+  margin-bottom: 12px;
+  border: 1px solid #7CFC8A;
+  border-radius: 7px;
+  overflow: hidden;
+
+  span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background-color: #7CFC8A;
+    transition: width 0.3s ease;
+  }
+}
+
+.nf-deep .nf-terminal__body {
+  white-space: normal; // Only the Guide entry's typed text needs preserved line breaks
+}
+
+.prose-card .nf-terminal p.nf-deep__42 {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1;
+  margin: 18px 0 10px 0;
+  color: $screen-yellow;
+}
+
+// ── Infinite Improbability Drive ─────────────────────────────────────────
+.nf-improb {
+  text-align: center;
+  padding: 24px;
+  border-radius: 14px;
+  background: radial-gradient(circle at 50% 40%, #FFFFFF 0%, #FFF8C4 60%, #FFEE33 100%);
+
+  .nf-improb__btn {
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $screen-yellow;
+    background-color: #B71C1C;
+    padding: 16px 30px;
+    border-radius: $radius-pill;
+    box-shadow: 0 6px 0 #7F0000;
+
+    &:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #7F0000;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: default;
+    }
+  }
+
+  .nf-improb__odds {
+    font-family: $font-mono;
+    font-weight: 700;
+    margin-top: 18px;
+  }
+}
+
+// ── Marvin ───────────────────────────────────────────────────────────────
+.prose-card .nf-marvin__log {
+  list-style: none;
+  margin-left: 0;
+  white-space: normal;
+
+  li {
+    margin-bottom: 8px;
+    animation: nf-fade-in 0.6s ease;
+  }
+}
+
+@keyframes nf-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+// ── Vogon poetry ─────────────────────────────────────────────────────────
+.nf-poetry {
+  transition: transform 1.6s ease-in, opacity 1.6s ease-in;
+
+  .nf-poetry__poem {
+    font-family: Georgia, serif;
+    font-size: 1.1rem;
+  }
+
+  .nf-poetry__choices {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    button {
+      text-align: left;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background-color: #F4F4F4;
+      border: 1px solid #DDD;
+
+      &:hover,
+      &:focus-visible {
+        background-color: #FFF8C4;
+        border-color: #8D6E00;
+      }
+    }
+  }
+
+  .nf-poetry__result a {
+    color: #1565C0;
+    text-decoration: underline;
+  }
+
+  &.is-airlocked {
+    transform: translate(120vw, -40px) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+// ── Sub-Etha radio ───────────────────────────────────────────────────────
+.nf-radio__body {
+  padding: 18px 20px;
+  font-family: $font-mono;
+  font-size: 0.9rem;
+}
+
+.nf-radio__qso {
+  margin: 0 0 16px 0;
+  min-height: 7.5em;
+  white-space: pre-wrap;
+  font-family: inherit;
+}
+
+.nf-radio__smeter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.nf-radio__scale {
+  flex: 1;
+  max-width: 260px;
+  height: 10px;
+  border: 1px solid #7CFC8A;
+  border-radius: 5px;
+  overflow: hidden;
+
+  span {
+    display: block;
+    height: 100%;
+    width: 2%;
+    background-color: #7CFC8A;
+    transition: width 0.15s linear;
+  }
+}
+
+.nf-radio__code {
+  letter-spacing: 0.25em;
+  color: $screen-yellow;
+  animation: nf-blink 1.4s steps(2, jump-none) infinite;
+}
+
+@keyframes nf-blink {
+  from { opacity: 1; }
+  to   { opacity: 0.25; }
+}
+
+.nf-radio__beep {
+  margin-left: 8px;
+  color: #0B120C;
+  background-color: #7CFC8A;
+  padding: 2px 10px;
+  border-radius: $radius-pill;
+  font-family: $font-mono;
+}
+
+// ── Text adventure ───────────────────────────────────────────────────────
+.nf-if {
+  background-color: #000;
+  color: #E8E8E8;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: $font-mono;
+  font-size: 0.9rem;
+
+  .nf-if__status {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 14px;
+    color: #000;
+    background-color: #E8E8E8;
+    white-space: pre;
+  }
+
+  .nf-if__screen {
+    height: 300px;
+    overflow-y: auto;
+    padding: 14px 16px 4px 16px;
+
+    p {
+      color: inherit;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      white-space: pre-wrap;
+    }
+
+    // Nested under the screen so they outrank the plain `p` color above
+    .nf-if__echo { color: #9E9E9E; }
+    .nf-if__hint { color: #9E9E9E; font-style: italic; }
+    .nf-if__death { color: #FF6E6E; font-weight: 700; text-align: center; }
+    .nf-if__win { color: $screen-yellow; font-weight: 700; text-align: center; }
+  }
+
+  .nf-if__form {
+    display: flex;
+    gap: 8px;
+    padding: 8px 16px 14px 16px;
+  }
+
+  input {
+    flex: 1;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: none;
+    outline: none;
+    caret-color: #E8E8E8;
+  }
+}
+
+// ── Accessibility: no motion ─────────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  .nf-notice.is-demolished,
+  .nf-notice__after,
+  .nf-marvin__log li,
+  .nf-radio__code {
+    animation: none;
+  }
+
+  .nf-poetry,
+  .nf-deep__bar span {
+    transition: none;
+  }
+}

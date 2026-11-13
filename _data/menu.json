@@ -1,32 +1,62 @@
 {
   "items": [
     {
-      "id": "about",
-      "label": "ABOUT",
-      "behavior": "horizontal_extension",
+      "id": "blog",
+      "label": "BLOG",
+      "behavior": "vertical_stack",
       "color": "#1B1E4B",
       "textColor": "#FFFFFF",
-      "extensionText": "K0FLB & OPERATOR PROFILE",
-      "url": "/about/"
+      "url": "/blog/",
+      "subItemsFrom": "blog",
+      "subItemsNewestFirst": true,
+      "subItemsLimit": 5,
+      "subItemTagline": "date",
+      "subItemColors": ["#D4881E", "#00838F", "#546E7A", "#8E24AA", "#E65100"],
+      "archive": {
+        "label": "ARCHIVE",
+        "tagline": "All Posts",
+        "url": "/blog/archive/",
+        "color": "#141414",
+        "textColor": "#FFEE33"
+      }
+    },
+    {
+      "id": "projects",
+      "label": "PROJECTS",
+      "behavior": "vertical_stack",
+      "color": "#1565C0",
+      "textColor": "#FFFFFF",
+      "url": "/projects/",
+      "subItemsFrom": "projects",
+      "subItemsNewestFirst": true,
+      "subItemsLimit": 5,
+      "subItemTagline": "date",
+      "subItemColors": ["#D4881E", "#00838F", "#546E7A", "#8E24AA", "#E65100"],
+      "archive": {
+        "label": "ARCHIVE",
+        "tagline": "All Projects",
+        "url": "/projects/archive/",
+        "color": "#141414",
+        "textColor": "#FFEE33"
+      }
     },
     {
       "id": "gear",
       "label": "GEAR",
       "behavior": "vertical_stack",
-      "color": "#1565C0",
+      "color": "#007A87",
       "textColor": "#FFFFFF",
       "url": "/gear/",
       "subItemsFrom": "gear",
-      "subItemColors": ["#D4881E", "#00838F", "#546E7A", "#8E24AA", "#E65100", "#689F38"]
-    },
-    {
-      "id": "projects",
-      "label": "PROJECTS",
-      "behavior": "horizontal_extension",
-      "color": "#007A87",
-      "textColor": "#FFFFFF",
-      "extensionText": "ANTENNAS, DIGITAL & HARDWARE",
-      "url": "/projects/"
+      "subItemsLimit": 5,
+      "subItemColors": ["#D4881E", "#00838F", "#546E7A", "#8E24AA", "#E65100"],
+      "archive": {
+        "label": "ARCHIVE",
+        "tagline": "All Gear",
+        "url": "/gear/archive/",
+        "color": "#141414",
+        "textColor": "#FFEE33"
+      }
     },
     {
       "id": "links",
@@ -47,13 +77,13 @@
       "url": "/guestbook/"
     },
     {
-      "id": "blog",
-      "label": "BLOG",
+      "id": "about",
+      "label": "ABOUT",
       "behavior": "horizontal_extension",
       "color": "#B71C1C",
       "textColor": "#FFFFFF",
-      "extensionText": "TRANSMISSIONS & FIELD NOTES",
-      "url": "/blog/"
+      "extensionText": "K0FLB & OPERATOR PROFILE",
+      "url": "/about/"
     }
   ],
   "footerItem": {

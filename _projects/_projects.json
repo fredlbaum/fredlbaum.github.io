@@ -1,5 +1,5 @@
 {
-  "layout": "project",
+  "layout": "projects-entry",
   "tags": "projects",
   "permalink": "/projects/{{ page.fileSlug }}/"
 }

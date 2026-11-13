@@ -1,0 +1,15 @@
+{%- comment -%}
+  Previous/next page links for a paginated list page. Link text comes from the page's
+  front matter (`nav_previous`, `nav_next`), defaulting to Newer/Older for dated sections.
+{%- endcomment -%}
+{% if pagination.pages.size > 1 %}
+  <nav class="pagination-nav" aria-label="Pagination">
+    {% if pagination.href.previous %}
+      <a href="{{ pagination.href.previous }}">&larr; {{ nav_previous | default: "Newer" }}</a>
+    {% endif %}
+    <span class="pagination-nav__page">Page {{ pagination.pageNumber | plus: 1 }} of {{ pagination.pages.size }}</span>
+    {% if pagination.href.next %}
+      <a href="{{ pagination.href.next }}">{{ nav_next | default: "Older" }} &rarr;</a>
+    {% endif %}
+  </nav>
+{% endif %}

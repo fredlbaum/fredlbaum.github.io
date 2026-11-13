@@ -1,0 +1,26 @@
+---
+layout: page
+---
+{{ content }}
+
+{% if entries.size > 0 %}
+  <ul class="entry-list">
+    {% for post in entries %}
+      <li class="entry-list__item">
+        <h2 class="entry-list__title">
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+        </h2>
+        <div class="entry-list__meta">{{ post.date | date_formatted }}</div>
+        {% if post.data.description %}
+          <p class="entry-list__desc">{{ post.data.description }}</p>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p class="entry-list__empty">No blog posts yet.</p>
+{% endif %}
+
+{% include "pagination-nav.html" %}
+
+<p class="archive-link"><a href="/blog/archive/">Browse the full archive &rarr;</a></p>

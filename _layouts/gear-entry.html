@@ -12,7 +12,7 @@ body_class: gear-screen
       <header>
         <h1>{{ title }}</h1>
         <div class="post-meta">
-          <a href="/gear/#{{ category }}">{{ category_title }}</a>
+          <a href="/gear/archive/#{{ category }}">{{ category_title }}</a>
           {% if model %} &middot; {{ model }}{% endif %}
           {% if bands %} &middot; {{ bands }}{% endif %}
           {% if status %} &middot; <span class="project-status">{{ status }}</span>{% endif %}
@@ -23,7 +23,7 @@ body_class: gear-screen
         {% if description %}<p class="gear-lead">{{ description }}</p>{% endif %}
         {{ content }}
       </div>
-      <p class="project-back"><a href="/gear/#{{ category }}">&larr; All Gear</a></p>
+      <p class="project-back"><a href="/gear/">&larr; All Gear</a></p>
     </article>
   </div>
 </div>

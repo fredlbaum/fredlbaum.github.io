@@ -2,11 +2,47 @@
 
 This guide explains how to add and edit articles and menu entries on `k0flb.com` directly through the GitHub web interface.
 
+## Where Everything Lives
+
+Every page's text is in a Markdown (`.md`) file. There are two kinds of pages:
+
+**Entry sections**: a page that lists entries, plus one `.md` file per entry. Add an entry by adding a file to the folder.
+
+| Section | Page intro text | Archive intro text | Entries (one `.md` each) |
+|---|---|---|---|
+| Blog | `blog.md` | `blog-archive.md` | `_blog/` |
+| Projects | `projects.md` | `projects-archive.md` | `_projects/` |
+| Gear | `gear.md` | `gear-archive.md` | `_gear/` |
+
+All three sections work the same way:
+
+| | URL |
+|---|---|
+| List page (10 per page, with Newer/Older links; Gear says Previous/Next) | `/blog/`, `/blog/page/2/`, … |
+| Each entry, with a "← All …" link back to the list | `/blog/<file-name>/` |
+| Archive of every entry (blog and projects by year, gear by category) | `/blog/archive/` |
+
+On the home screen, each pop-up shows **5 entries** (blog and projects: newest first; gear: by `order`) plus an **ARCHIVE** bar.
+
+**File names must be unique after the date, and can't be `archive` or `page`.** The date is dropped from the URL, so `2026-01-01-field-day.md` and `2027-06-01-field-day.md` would both become `/blog/field-day/` and the build fails; use e.g. `2027-06-01-field-day-2027.md`. Likewise `…-archive.md` would collide with `/blog/archive/`.
+
+**Simple pages**: the whole page is one `.md` file. Edit it directly.
+
+| Page | File |
+|---|---|
+| About | `about.md` |
+| Links | `links.md` |
+| Guest Book | `guestbook.md` (the form's address is `form_url` in its front matter) |
+| The Guide | `guide/index.md` |
+| 404 (page not found) | `404.md` (see below) |
+
+The "Return to Interactive Menu" link is added to every page automatically.
+
 ---
 
-## Adding a New Post / Transmission
+## Adding a Blog Post
 
-1. Navigate to the `_posts/` folder on GitHub.
+1. Navigate to the `_blog/` folder on GitHub.
 2. Click **Add file** &rarr; **Create new file**.
 3. Name the file using the format: `YYYY-MM-DD-title-slug.md` (e.g. `2026-06-01-field-day-report.md`).
 4. Paste the front matter block at the very top:
@@ -27,7 +63,7 @@ This guide explains how to add and edit articles and menu entries on `k0flb.com`
 
 ## Adding a New Project
 
-Projects work the same way as posts, but live in the `_projects/` folder and appear on `/projects/`.
+Projects work the same way as blog posts, but live in the `_projects/` folder and appear on `/projects/`.
 
 1. Navigate to the `_projects/` folder on GitHub.
 2. Click **Add file** &rarr; **Create new file**.
@@ -72,7 +108,7 @@ Each piece of station gear is its own Markdown file in `_gear/`. It gets its own
 
    Optional details: settings, mods, impressions.
    ```
-   * `category` must be one of `transceivers`, `antennas`, `portable`, `power`, `accessories`, `computers` (defined in `_data/gear_categories.json`; these also match the GEAR menu's pop-up links).
+   * `category` must be one of `transceivers`, `antennas`, `portable`, `power`, `accessories`, `computers` (defined in `_data/gear_categories.json`; each is a section on `/gear/`).
    * `model`, `bands`, `status`, `acquired` are optional; blank or missing ones are simply not shown.
    * `order` sorts items within a category (lower first); ties sort by title.
    * Every gear item automatically gets a bar in the home-screen GEAR pop-up. Optional `menuLabel` and `menuTagline` set short text for that bar (defaults: the title, and the category name).
@@ -80,13 +116,44 @@ Each piece of station gear is its own Markdown file in `_gear/`. It gets its own
 
 ---
 
-## Adding a Link
+## The 404 Page
 
-Links on `/links/` are configured in `_data/links.json`, grouped by category.
+Any address that doesn't exist shows `404.md`: a "DON'T PANIC" banner, one randomly chosen Hitchhiker's gag, a **Try another** button that steps through the rest, and "Did you mean…?" suggestions of real pages with similar addresses.
 
-* To add a link, copy an existing `{ "title", "url", "description" }` block into the right category's `links` list.
-* To add a category, copy a whole `{ "category": ..., "links": [...] }` block.
-* Mind the commas between blocks; GitHub's editor will flag broken JSON.
+* **Turn a gag on or off:** in `404.md`'s front matter, set it to `true` or `false` under `gags:`.
+* **Preview a gag:** visit `/404.html?gag=<name>`, e.g. `/404.html?gag=text-adventure`.
+* **Edit a gag's text:** each gag is its own file in `_includes/not-found/<name>.html`. Animated lines (Marvin's sighs, the Improbability Drive events, the text adventure) are in `assets/js/not-found.js`.
+
+| Gag | What it does |
+|---|---|
+| `guide-entry` | The Guide's entry for "404", typed out on a green terminal |
+| `vogon-notice` | Official demolition notice with a 10-second countdown, then it crumbles |
+| `deep-thought` | A 7.5-million-year search that suddenly answers 42 |
+| `improbability-drive` | Button that "jumps" the visitor to a random real page on the site |
+| `marvin` | Marvin's gloomy service log, one sigh at a time |
+| `vogon-poetry` | Original Vogon poem; praise it to leave politely, or get thrown out the airlock |
+| `sub-etha` | K0FLB calling the missing page on the air: S-meter at S0, 404 in Morse (click to hear it) |
+| `text-adventure` | A tiny playable text adventure: get the towel and hitchhike out, or be demolished |
+
+---
+
+## Editing Simple Pages (About, Links, …)
+
+Open the page's `.md` file (see the table at the top), click the pencil icon, and edit the Markdown below the `---` front matter.
+
+For example, to add a link to `links.md`, add a `###` heading with the link and a description under it, inside the right `##` category:
+
+```markdown
+## Radio Clubs
+
+### [ARRL](https://www.arrl.org/)
+
+The national association for amateur radio.
+```
+
+`##` headings show as green category titles and `###` headings as blue link titles.
+
+For an entry section (Blog, Projects, Gear), editing its page `.md` file only changes the intro text at the top; the list underneath is built from the entry files.
 
 ---
 

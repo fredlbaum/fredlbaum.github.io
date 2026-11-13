@@ -6,7 +6,7 @@ import site from "./_data/site.js";
 
 export default function (eleventyConfig) {
   // ── Ignored files (not published) ──────────────────────────────────────────
-  for (const f of ["README.md", "usage.md", "CLAUDE.md", "LICENSE", "_posts/_template.md", "_projects/_template.md", "_gear/_template.md"]) {
+  for (const f of ["README.md", "usage.md", "CLAUDE.md", "LICENSE", "_blog/_template.md", "_projects/_template.md", "_gear/_template.md"]) {
     eleventyConfig.ignores.add(f);
   }
 
@@ -43,7 +43,7 @@ export default function (eleventyConfig) {
   // ── Gear Collection (sorted by `order`, then title) ───────────────────────
   eleventyConfig.addCollection("gear", (api) =>
     api.getFilteredByGlob("_gear/*.md").sort(
-      (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99) || a.data.title.localeCompare(b.data.title),
+      (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99) || String(a.data.title).localeCompare(String(b.data.title)),
     ),
   );
 
@@ -73,7 +73,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(feedPlugin, {
     type: "atom",
     outputPath: "/feed.xml",
-    collection: { name: "posts", limit: 10 },
+    collection: { name: "blog", limit: 10 },
     metadata: {
       language: "en",
       title: site.title,
