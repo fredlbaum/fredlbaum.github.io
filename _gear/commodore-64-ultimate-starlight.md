@@ -12,7 +12,7 @@ menuTagline: "Starlight Edition"
 The Commodore 64 is back. Not as an emulator in a shrunken shell, but as a full-size, real-hardware recreation sold under the actual Commodore name. I picked up the **Starlight Edition**, the translucent one that lights up, and wanted to write down what this machine is and what's inside it.
 
 <figure>
-  <img src="https://commodore.net/content/uploads/2026/04/c64u_c64cu-starlight-homepage-scaled-1.png"
+  <img src="/assets/images/c64-ultimate-starlight-and-64c.jpg" width="1600" height="497"
        alt="Commodore 64 Ultimate Starlight Edition (left) and Commodore 64C Ultimate (right), both in translucent cases glowing with rainbow LEDs"
        loading="lazy">
   <figcaption>The Commodore 64 Ultimate Starlight Edition (left) beside its newer sibling, the 64C Ultimate. Image: <a href="https://commodore.net/">Commodore International Corporation</a>.</figcaption>
@@ -50,7 +50,7 @@ It also keeps the original **physical ports**, so real C64 hardware still plugs 
 The C64 Ultimate came in three editions: the classic **BASIC Beige** ($299.99 at launch), the **Starlight Edition** ($349.99 at launch), and the gold **Founders Edition** ($499.99 at launch). Prices have since gone up; check the [Commodore store](https://commodore.net/store/commodore64/) for current pricing.
 
 <figure>
-  <img src="https://commodore.net/content/uploads/2026/04/glow_red_ckey-scaled.png"
+  <img src="/assets/images/c64-ultimate-starlight-keys.jpg" width="1600" height="1067"
        alt="Close-up of the Starlight Edition's transparent smoked keycaps, including RUN/STOP, SHIFT and the Commodore key, lit red"
        loading="lazy">
   <figcaption>The Starlight Edition's transparent keycaps and case. Image: <a href="https://commodore.net/">Commodore International Corporation</a>.</figcaption>
