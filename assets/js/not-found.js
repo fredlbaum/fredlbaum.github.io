@@ -81,18 +81,19 @@ document.addEventListener("DOMContentLoaded", () => {
         "Your left shoe briefly becomes a small, polite poem.",
         "Everything turns into knitwear. Then, mercifully, back again.",
       ];
+      const STEP_MS = 4000; // How long each odds/event message stays on screen
       btn.onclick = async () => {
         btn.disabled = true;
         readout.hidden = false;
-        const exps = [276709, 65536, 4096, 512, 64, 8, 2, 1];
+        const exps = [276709, 4096, 64, 1]; // One odds step per event, so none repeat
         exps.forEach((e, i) => later(() => {
           odds.textContent = e > 1 ? `Improbability: 2^${e.toLocaleString()} to 1 against` : "Improbability: 1 to 1. Normality achieved.";
           event.textContent = events[i % events.length];
-        }, i * 650));
+        }, i * STEP_MS));
         const pages = (await sitemap).filter((p) => p !== location.pathname);
         const dest = pages.length ? pages[Math.floor(Math.random() * pages.length)] : "/";
-        later(() => { event.textContent = `Arriving at ${dest} …`; }, exps.length * 650);
-        later(() => { location.href = dest; }, exps.length * 650 + 1400);
+        later(() => { event.textContent = `Arriving at ${dest} …`; }, exps.length * STEP_MS);
+        later(() => { location.href = dest; }, (exps.length + 1) * STEP_MS);
       };
     },
 
