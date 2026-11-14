@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About K0FLB
+title: About
 description: "About Erick"
 permalink: /about/
 ---
