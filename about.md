@@ -1,11 +1,11 @@
 ---
 layout: page
 title: About K0FLB
-description: "About Fred L. Baum and amateur radio station K0FLB."
+description: "About Erick and amateur radio station K0FLB."
 permalink: /about/
 ---
 
-**K0FLB** is the amateur radio callsign of Fred L. Baum.
+**K0FLB** is the amateur radio callsign of Erick.
 
 This site serves as the central digital transmission relay for personal logs, amateur radio projects, technical documentation, and astronomical musings.
 

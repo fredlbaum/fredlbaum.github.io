@@ -51,7 +51,7 @@ The "Return to Interactive Menu" link is added to every page automatically.
    title: "Field Day Station Report"
    date: 2026-06-01
    description: "Summary of 40m/20m operations during ARRL Field Day."
-   author: "Fred L. Baum (K0FLB)"
+   author: "Erick"
    ---
 
    Your content goes here in standard Markdown.

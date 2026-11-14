@@ -1,6 +1,6 @@
 # k0flb.com
 
-The official website and transmission relay for **K0FLB** (Fred L. Baum), featuring a retro-futuristic interactive menu interface inspired by the 2005 promotional system for *The Hitchhiker's Guide to the Galaxy*.
+The official website and transmission relay for **K0FLB** (Erick), featuring a retro-futuristic interactive menu interface inspired by the 2005 promotional system for *The Hitchhiker's Guide to the Galaxy*.
 
 ---
 

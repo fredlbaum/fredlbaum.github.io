@@ -2,7 +2,7 @@
 title: "Transceiver Online: DON'T PANIC"
 date: 2026-05-13
 description: "Initial transmission from K0FLB. The new static engine is live, powered by Eleventy and inspired by The Hitchhiker's Guide to the Galaxy."
-author: "Fred L. Baum (K0FLB)"
+author: "Erick"
 ---
 
 Welcome to the new transmission portal for **K0FLB** (`k0flb.com`).
