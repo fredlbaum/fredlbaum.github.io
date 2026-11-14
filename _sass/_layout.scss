@@ -28,17 +28,15 @@
   color: $screen-dark;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+}
 
-  &::before {
-    content: "";
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background-color: #E53935;
-    border-radius: 50%;
-    box-shadow: 0 0 8px rgba(229, 57, 53, 0.8);
-  }
+// Star-cluster logo (_includes/logo.svg); its fill follows `color`
+.site-title__logo {
+  height: 2.2rem;
+  width: auto;
+  flex-shrink: 0;
+  color: $screen-dark;
 }
 
 .site-tagline {

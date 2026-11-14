@@ -13,6 +13,7 @@ export default function (eleventyConfig) {
   // ── Passthrough copies ────────────────────────────────────────────────────
   eleventyConfig.addPassthroughCopy("CNAME");
   eleventyConfig.addPassthroughCopy("robots.txt");
+  eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy({ ".well-known": ".well-known" });
   eleventyConfig.addPassthroughCopy({ ".well-known/security.txt": "security.txt" });
   eleventyConfig.addPassthroughCopy("assets/images");
