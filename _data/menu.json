@@ -11,14 +11,29 @@
       "subItemsNewestFirst": true,
       "subItemsLimit": 5,
       "subItemTagline": "date",
-      "subItemColors": ["#D4881E", "#00838F", "#546E7A", "#8E24AA", "#E65100"],
-      "archive": {
-        "label": "ARCHIVE",
-        "tagline": "All Posts",
-        "url": "/blog/archive/",
-        "color": "#141414",
-        "textColor": "#FFEE33"
-      }
+      "subItemColors": [
+        "#D4881E",
+        "#00838F",
+        "#546E7A",
+        "#8E24AA",
+        "#E65100"
+      ],
+      "extraBars": [
+        {
+          "label": "ALL POSTS",
+          "tagline": "Newest first",
+          "url": "/blog/",
+          "color": "#1B1E4B",
+          "textColor": "#FFFFFF"
+        },
+        {
+          "label": "ARCHIVE",
+          "tagline": "By year",
+          "url": "/blog/archive/",
+          "color": "#141414",
+          "textColor": "#FFEE33"
+        }
+      ]
     },
     {
       "id": "projects",
@@ -31,14 +46,29 @@
       "subItemsNewestFirst": true,
       "subItemsLimit": 5,
       "subItemTagline": "date",
-      "subItemColors": ["#D4881E", "#00838F", "#546E7A", "#8E24AA", "#E65100"],
-      "archive": {
-        "label": "ARCHIVE",
-        "tagline": "All Projects",
-        "url": "/projects/archive/",
-        "color": "#141414",
-        "textColor": "#FFEE33"
-      }
+      "subItemColors": [
+        "#D4881E",
+        "#00838F",
+        "#546E7A",
+        "#8E24AA",
+        "#E65100"
+      ],
+      "extraBars": [
+        {
+          "label": "ALL PROJECTS",
+          "tagline": "Newest first",
+          "url": "/projects/",
+          "color": "#1565C0",
+          "textColor": "#FFFFFF"
+        },
+        {
+          "label": "ARCHIVE",
+          "tagline": "By year",
+          "url": "/projects/archive/",
+          "color": "#141414",
+          "textColor": "#FFEE33"
+        }
+      ]
     },
     {
       "id": "gear",
@@ -49,14 +79,29 @@
       "url": "/gear/",
       "subItemsFrom": "gear",
       "subItemsLimit": 5,
-      "subItemColors": ["#D4881E", "#00838F", "#546E7A", "#8E24AA", "#E65100"],
-      "archive": {
-        "label": "ARCHIVE",
-        "tagline": "All Gear",
-        "url": "/gear/archive/",
-        "color": "#141414",
-        "textColor": "#FFEE33"
-      }
+      "subItemColors": [
+        "#D4881E",
+        "#00838F",
+        "#546E7A",
+        "#8E24AA",
+        "#E65100"
+      ],
+      "extraBars": [
+        {
+          "label": "ALL GEAR",
+          "tagline": "With descriptions",
+          "url": "/gear/",
+          "color": "#007A87",
+          "textColor": "#FFFFFF"
+        },
+        {
+          "label": "ARCHIVE",
+          "tagline": "By category",
+          "url": "/gear/archive/",
+          "color": "#141414",
+          "textColor": "#FFEE33"
+        }
+      ]
     },
     {
       "id": "links",

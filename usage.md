@@ -22,7 +22,7 @@ All three sections work the same way:
 | Each entry, with a "← All …" link back to the list | `/blog/<file-name>/` |
 | Archive of every entry (blog and projects by year, gear by category) | `/blog/archive/` |
 
-On the home screen, each pop-up shows **5 entries** (blog and projects: newest first; gear: by `order`) plus an **ARCHIVE** bar.
+On the home screen, each pop-up shows **5 entries** (blog and projects: newest first; gear: by `order`), then an **ALL …** bar to the list page and an **ARCHIVE** bar. These two are set as `extraBars` in `_data/menu.json`.
 
 **File names must be unique after the date, and can't be `archive` or `page`.** The date is dropped from the URL, so `2026-01-01-field-day.md` and `2027-06-01-field-day.md` would both become `/blog/field-day/` and the build fails; use e.g. `2027-06-01-field-day-2027.md`. Likewise `…-archive.md` would collide with `/blog/archive/`.
 

@@ -74,6 +74,48 @@
   }
 }
 
+// "← Interface": styled like a guide-menu pill (dark bar, yellow text, red-dot cap)
+// so it reads as the way back to the Interactive Menu
+.site-nav .site-nav__home {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 44px 8px 18px;
+  color: $screen-yellow;
+  background-color: $color-spectrum-dark;
+  border: 2px solid $screen-dark;
+  box-shadow: 0 4px 12px rgba(18, 18, 18, 0.22);
+
+  // Round end cap with the red "DON'T PANIC" dot, like THE GUIDE pill
+  &::after {
+    content: "";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    border-radius: 50%;
+    background-color: #E53935;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .site-nav__arrow {
+    transition: transform $transition-fast;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: $screen-yellow;
+    background-color: #000000;
+
+    .site-nav__arrow {
+      transform: translateX(-4px);
+    }
+  }
+}
+
 // ── Article & Content Styles ─────────────────────────────────────────────
 .content-area {
   padding: 48px 0 72px 0;

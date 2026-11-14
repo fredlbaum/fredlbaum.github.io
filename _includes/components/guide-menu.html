@@ -19,7 +19,8 @@
           colored by cycling `subItemColors`) or from a hand-written `subItems` list.
           Collection options: `subItemsNewestFirst` (reverse date order), `subItemsLimit` (max bars),
           `subItemTagline` ("date" or "category" fallback when an entry has no menuTagline),
-          and `archive` ({ label, tagline, url, color, textColor }) for a final "see everything" bar.
+          and `extraBars` (a list of { label, tagline, url, color, textColor }) for fixed bars
+          after the entries, e.g. VIEW ALL and ARCHIVE.
         {%- endcomment -%}
         {%- if item.subItemsFrom -%}
           {%- assign subs = collections[item.subItemsFrom] -%}
@@ -28,7 +29,7 @@
           {%- assign subs = item.subItems -%}
         {%- endif -%}
         {%- assign sub_limit = item.subItemsLimit | default: subs.size %}
-        {% if subs.size > 0 or item.archive %}
+        {% if subs.size > 0 or item.extraBars %}
           <div class="guide-popup-stack" role="menu" aria-label="{{ item.label }} sub-menu">
             {% for sub in subs limit: sub_limit %}
               {%- if item.subItemsFrom -%}
@@ -63,19 +64,19 @@
                 <span class="guide-sub-bar__cap" aria-hidden="true"></span>
               </a>
             {% endfor %}
-            {% if item.archive %}
-              {%- assign archive_index = subs.size | at_most: sub_limit %}
-              <a href="{{ item.archive.url }}"
-                 class="guide-sub-bar guide-sub-bar--archive"
-                 style="--sub-color: {{ item.archive.color }}; --sub-text: {{ item.archive.textColor }}; --sub-index: {{ archive_index }};"
+            {%- assign shown_count = subs.size | at_most: sub_limit -%}
+            {% for bar in item.extraBars %}
+              <a href="{{ bar.url }}"
+                 class="guide-sub-bar guide-sub-bar--extra"
+                 style="--sub-color: {{ bar.color }}; --sub-text: {{ bar.textColor }}; --sub-index: {{ shown_count | plus: forloop.index0 }};"
                  role="menuitem">
-                <span class="guide-sub-bar__label">{{ item.archive.label }}</span>
-                {% if item.archive.tagline %}
-                  <span class="guide-sub-bar__tagline">{{ item.archive.tagline }}</span>
+                <span class="guide-sub-bar__label">{{ bar.label }}</span>
+                {% if bar.tagline %}
+                  <span class="guide-sub-bar__tagline">{{ bar.tagline }}</span>
                 {% endif %}
                 <span class="guide-sub-bar__cap" aria-hidden="true"></span>
               </a>
-            {% endif %}
+            {% endfor %}
           </div>
         {% endif %}
       </div>

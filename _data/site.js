@@ -7,8 +7,7 @@ export default {
   author: {
     name: "Fred L. Baum",
     callsign: "K0FLB",
-    email: "admin@k0flb.com",
+    email: "erick@k0flb.com", // Header Email button and RSS feed author
   },
-  social_url: "https://github.com/fredlbaum",
   motto: "DON'T PANIC",
 };
